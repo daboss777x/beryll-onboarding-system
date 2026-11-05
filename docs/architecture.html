@@ -1,0 +1,251 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beryll Onboard Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@400;700&display=swap">
+<style>
+/* Layout: a whiteboard hung on a wall, one hand-drawn system sketch, sticky notes stuck underneath for the details. Single deliberate light look. */
+:root{
+  --wall:#e4e8ec;
+  --board:#fdfdfc;
+  --frame:#b9bfc6;
+  --ink:#23262b;
+  --blue:#1f4fbf;
+  --green:#1b8a4c;
+  --red:#d2382c;
+  --purple:#6a3fb5;
+  --orange:#d9771f;
+  --sticky:#fff27a;
+  --sticky2:#ffd1e3;
+  --sticky3:#c8f1d4;
+  --hand:"Caveat", "Comic Sans MS", "Bradley Hand", cursive;
+  --note:"Kalam", "Comic Sans MS", "Bradley Hand", cursive;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--wall); color:var(--ink); font-family:var(--note); margin:0;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap{max-width:1180px; margin:0 auto; padding-block:32px 64px; display:flex; flex-direction:column; gap:28px}
+h1{font-family:var(--hand); font-weight:700; font-size:clamp(2.2rem,5vw,3.2rem); margin:0; line-height:1; color:var(--ink)}
+h1 span{color:var(--blue)}
+
+.board-shell{background:var(--frame); padding:12px; border-radius:8px; box-shadow:0 18px 40px -20px rgba(30,40,60,.45), inset 0 1px 0 rgba(255,255,255,.6)}
+.board{
+  background:
+    radial-gradient(ellipse 40% 25% at 20% 30%, rgba(120,140,170,.06), transparent 70%),
+    radial-gradient(ellipse 30% 20% at 80% 75%, rgba(120,140,170,.07), transparent 70%),
+    var(--board);
+  border-radius:3px; overflow-x:auto;
+}
+.board svg{display:block; width:100%; min-width:880px; height:auto}
+.tray{height:14px; margin:0 6% ; background:linear-gradient(#cfd4da,#a9b0b8); border-radius:0 0 8px 8px; position:relative}
+.tray i{position:absolute; top:-6px; height:9px; width:70px; border-radius:4px}
+.tray i:nth-child(1){left:12%; background:var(--blue)}
+.tray i:nth-child(2){left:22%; background:var(--red); width:62px}
+.tray i:nth-child(3){left:31%; background:var(--ink); width:66px}
+.tray i:nth-child(4){right:14%; background:#f4f4f4; width:56px; height:12px; top:-9px; border:1px solid #bbb}
+
+.notes{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:26px; padding:10px 6px 0}
+.note{background:var(--sticky); padding:18px 20px 22px; box-shadow:0 10px 18px -12px rgba(0,0,0,.45); font-size:1rem; line-height:1.45; transform:rotate(-1.2deg)}
+.note:nth-child(2){background:var(--sticky2); transform:rotate(1deg)}
+.note:nth-child(3){background:var(--sticky3); transform:rotate(-.6deg)}
+.note h2{font-family:var(--hand); font-size:1.75rem; margin:0 0 6px; line-height:1}
+.note ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:4px}
+@media (prefers-reduced-motion:reduce){ .note{transform:none} }
+</style>
+
+<div class="wrap">
+  <h1>Beryll Onboard <span>- how the onboarding app fits together</span></h1>
+
+  <div>
+    <div class="board-shell">
+      <div class="board">
+        <svg id="board" viewBox="0 0 1200 800" role="img" aria-label="Hand-drawn system map: the new hire, manager and buddy sign in through the Next.js middleware doorman into the Beryll app on Next.js. The app reads lessons from the handbook, grades with answer keys from a locked server-only drawer, asks OpenAI for coaching and grading, checks the program day, saves to Supabase, and prints PDF certificates."></svg>
+      </div>
+    </div>
+    <div class="tray"><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <h2>Heads up</h2>
+      <ul>
+        <li>gpt-5.6-luna rejects custom temperature, so the client skips it</li>
+        <li>No OpenAI key: certification role-play capped at 74</li>
+        <li>The SQL has never run on a real Supabase</li>
+        <li>Production demo needs DEMO_MODE=true at runtime</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h2>To confirm</h2>
+      <ul>
+        <li>Supabase region: EU, close to Dublin</li>
+        <li>One hire per buddy for now</li>
+        <li>Keep the no-key cap at 74</li>
+        <li>No content editor for managers</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h2>Stack</h2>
+      <ul>
+        <li>Next.js 15, Tailwind v4, Framer Motion</li>
+        <li>Supabase: login, Postgres, pgvector search</li>
+        <li>OpenAI gpt-5.6-luna, react-pdf certificates</li>
+        <li>Vercel hosting, Vitest and Playwright tests</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+<script>
+(function(){
+  var NS = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("board");
+  var rc = window.rough ? rough.svg(svg) : null;
+  var C = {ink:"#23262b", blue:"#1f4fbf", green:"#1b8a4c", red:"#d2382c", purple:"#6a3fb5", orange:"#d9771f", grey:"#6b7178"};
+  var seed = 7;
+
+  function o(extra){
+    var base = {stroke:C.ink, strokeWidth:2.4, roughness:1.4, bowing:1.2, seed:seed++};
+    for (var k in extra) base[k] = extra[k];
+    return base;
+  }
+  function el(tag, attrs){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+  function put(g){ svg.appendChild(g); return g; }
+
+  // shapes (rough when available, plain SVG otherwise)
+  function rect(cx, cy, w, h, opt){
+    if (rc) return put(rc.rectangle(cx - w/2, cy - h/2, w, h, o(opt)));
+    return el("rect", {x:cx-w/2, y:cy-h/2, width:w, height:h, rx:10, fill:opt && opt.fill ? opt.fill : "none", "fill-opacity":.25, stroke:(opt&&opt.stroke)||C.ink, "stroke-width":2.4});
+  }
+  function ellipse(cx, cy, w, h, opt){
+    if (rc) return put(rc.ellipse(cx, cy, w, h, o(opt)));
+    return el("ellipse", {cx:cx, cy:cy, rx:w/2, ry:h/2, fill:opt && opt.fill ? opt.fill : "none", "fill-opacity":.25, stroke:(opt&&opt.stroke)||C.ink, "stroke-width":2.4});
+  }
+  function path(d, opt){
+    if (rc) return put(rc.path(d, o(opt)));
+    return el("path", {d:d, fill:"none", stroke:(opt&&opt.stroke)||C.ink, "stroke-width":(opt&&opt.strokeWidth)||2.4, "stroke-dasharray":opt&&opt.strokeLineDash ? opt.strokeLineDash.join(" ") : ""});
+  }
+  function line(x1,y1,x2,y2,opt){ return path("M"+x1+" "+y1+" L"+x2+" "+y2, opt); }
+
+  function text(x, y, s, opt){
+    opt = opt || {};
+    var t = el("text", {x:x, y:y, "text-anchor":opt.anchor||"middle", fill:opt.color||C.ink,
+      "font-family":opt.family||"Caveat, 'Comic Sans MS', cursive", "font-size":opt.size||22, "font-weight":opt.weight||500});
+    String(s).split("\n").forEach(function(l, i){
+      var ts = document.createElementNS(NS, "tspan"); ts.setAttribute("x", x); if (i) ts.setAttribute("dy", (opt.size||22)*1.05); ts.textContent = l; t.appendChild(ts);
+    });
+    if (opt.rotate) t.setAttribute("transform", "rotate("+opt.rotate+" "+x+" "+y+")");
+    return t;
+  }
+  function title(x, y, main, sub, color){
+    text(x, y, main, {size:32, weight:700, color:color||C.ink});
+    if (sub) text(x, y + 24, sub, {size:19, color:C.grey});
+  }
+
+  // arrow along a quadratic curve, with a hand-drawn head
+  function arrow(x1, y1, x2, y2, opt){
+    opt = opt || {};
+    var bend = opt.bend || 0;
+    var mx = (x1+x2)/2, my = (y1+y2)/2, dx = x2-x1, dy = y2-y1, len = Math.hypot(dx,dy) || 1;
+    var cx = mx - dy/len*bend, cy = my + dx/len*bend;
+    var col = opt.color || C.ink;
+    var po = {stroke:col, strokeWidth:opt.width||2.2, roughness:1.1};
+    if (opt.dashed) po.strokeLineDash = [9, 7];
+    path("M"+x1+" "+y1+" Q"+cx+" "+cy+" "+x2+" "+y2, po);
+    var ax = x2-cx, ay = y2-cy, al = Math.hypot(ax,ay) || 1; ax/=al; ay/=al;
+    var s = 15, sp = 0.45;
+    var hx1 = x2 - s*(ax*Math.cos(sp) - ay*Math.sin(sp)), hy1 = y2 - s*(ay*Math.cos(sp) + ax*Math.sin(sp));
+    var hx2 = x2 - s*(ax*Math.cos(-sp) - ay*Math.sin(-sp)), hy2 = y2 - s*(ay*Math.cos(-sp) + ax*Math.sin(-sp));
+    path("M"+hx1+" "+hy1+" L"+x2+" "+y2+" L"+hx2+" "+hy2, {stroke:col, strokeWidth:opt.width||2.2, roughness:.6});
+    if (opt.label){
+      var lx = opt.lx != null ? opt.lx : (x1+2*cx+x2)/4, ly = opt.ly != null ? opt.ly : (y1+2*cy+y2)/4;
+      text(lx, ly, opt.label, {size:23, color:col, weight:700, anchor:opt.anchor});
+    }
+  }
+  // red marker annotation with a little squiggle pointer
+  function note(x, y, s, px, py, anchor){
+    text(x, y, s, {size:22, color:C.red, weight:700, anchor:anchor||"middle"});
+    if (px != null) path("M"+(anchor==="start"?x-8:x)+" "+(y-24)+" Q"+((x+px)/2+10)+" "+((y+py)/2-14)+" "+px+" "+py, {stroke:C.red, strokeWidth:1.6, roughness:1.6});
+  }
+
+  // ---------- nodes ----------
+  function person(x, y, label){
+    ellipse(x, y - 30, 34, 34, {strokeWidth:2.4});
+    path("M "+(x-26)+" "+(y+24)+" Q "+x+" "+(y-24)+" "+(x+26)+" "+(y+24), {strokeWidth:2.4});
+    text(x, y + 54, label, {size:28, weight:700});
+  }
+  person(95, 150, "New hire");
+  person(95, 330, "Manager");
+  person(95, 510, "Buddy");
+
+  // Doorman (middleware)
+  rect(330, 330, 200, 96, {stroke:C.ink, strokeWidth:2.6});
+  path("M 402 300 l 9 10 l 18 -22", {stroke:C.green, strokeWidth:3, roughness:.8});
+  title(322, 328, "Doorman", "Next.js middleware");
+
+  // Handbook (content)
+  rect(520, 110, 230, 84, {stroke:C.orange, strokeWidth:2.6, fill:"#ffe1bf", fillStyle:"hachure", hachureGap:11});
+  line(418, 72, 418, 148, {stroke:C.orange, strokeWidth:2});
+  title(530, 108, "Handbook", "lessons, quizzes, SOPs", C.orange);
+
+  // Locked drawer (server-only keys)
+  rect(880, 110, 250, 84, {stroke:C.orange, strokeWidth:2.6});
+  ellipse(985, 88, 14, 14, {stroke:C.red, strokeWidth:2});
+  line(985, 95, 985, 106, {stroke:C.red, strokeWidth:2});
+  title(870, 108, "Locked drawer", "answer keys, rubrics", C.orange);
+
+  // Beryll app, the hub
+  ellipse(680, 390, 300, 170, {stroke:C.blue, strokeWidth:4, fill:"#c9d8ff", fillStyle:"hachure", hachureGap:8});
+  ellipse(680, 390, 316, 184, {stroke:C.blue, strokeWidth:1.4, roughness:2});
+  text(680, 388, "Beryll app", {size:52, weight:700, color:C.blue});
+  text(680, 420, "Next.js 15 server", {size:21, color:C.grey});
+
+  // Brain (OpenAI)
+  ellipse(1060, 290, 220, 120, {stroke:C.purple, strokeWidth:3, fill:"#e2d6fb", fillStyle:"hachure", hachureGap:10});
+  [[960,232,944,216],[1060,230,1060,212],[1156,236,1172,220]].forEach(function(p){ line(p[0],p[1],p[2],p[3],{stroke:C.purple, strokeWidth:2}); });
+  title(1060, 288, "Brain", "OpenAI gpt-5.6-luna", C.purple);
+
+  // Printer (PDF certificates)
+  rect(1060, 505, 120, 30, {stroke:C.ink, strokeWidth:2});
+  rect(1060, 560, 200, 100, {stroke:C.ink, strokeWidth:2.6});
+  title(1060, 568, "Printer", "react-pdf certificate");
+
+  // Notebook (database cylinder)
+  ellipse(680, 615, 230, 34, {stroke:C.ink, strokeWidth:2.6, fill:"#d9dde3", fillStyle:"solid"});
+  line(565, 615, 565, 715, {strokeWidth:2.6}); line(795, 615, 795, 715, {strokeWidth:2.6});
+  path("M 565 715 A 115 17 0 0 0 795 715", {strokeWidth:2.6});
+  title(680, 670, "Notebook", "Supabase Postgres");
+
+  // Day clock (program day)
+  ellipse(330, 620, 100, 100, {stroke:C.ink, strokeWidth:2.6});
+  line(330, 620, 330, 588, {strokeWidth:2.6}); line(330, 620, 354, 632, {strokeWidth:2.6});
+  title(330, 705, "Day clock", "getProgramDay()");
+
+  // ---------- arrows ----------
+  arrow(140, 150, 240, 292);
+  arrow(140, 330, 228, 330, {label:"sign in", lx:150, ly:316, anchor:"start"});
+  arrow(140, 505, 250, 378);
+  arrow(432, 340, 528, 372, {label:"lets in", lx:480, ly:332});
+  arrow(545, 318, 152, 132, {bend:60, label:"your screens", lx:330, ly:156, color:C.green});
+  arrow(560, 152, 628, 306, {label:"reads", lx:606, ly:226, anchor:"start", color:C.orange});
+  arrow(790, 152, 748, 304, {label:"grades with", lx:786, ly:252, anchor:"start", color:C.orange});
+  arrow(830, 352, 948, 302, {label:"asks", lx:880, ly:310, color:C.purple});
+  arrow(822, 446, 958, 540, {label:"prints", lx:912, ly:470, anchor:"start"});
+  arrow(680, 478, 680, 594, {label:"saves", lx:694, ly:546, anchor:"start"});
+  arrow(370, 585, 550, 468, {label:"what day?", lx:470, ly:568, anchor:"start"});
+
+  // ---------- annotations ----------
+  note(250, 425, "wrong role? sent home", null, null, "start");
+  note(805, 186, "never reaches the browser", null, null, "start");
+  note(1040, 398, "no key? scripted answers");
+  note(1060, 640, "certified = AI 75+\nplus manager 3/5");
+  note(680, 775, "no Supabase? runs in memory");
+  note(330, 775, "content unlocks by day");
+  note(935, 745, "fail? answers stay hidden\ncapped tries per day");
+})();
+</script>

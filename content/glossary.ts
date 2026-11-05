@@ -1,0 +1,51 @@
+import type { GlossaryTerm } from "./schema";
+
+type Row = [id: string, term: string, category: GlossaryTerm["category"], definition: string, aliases?: string[]];
+
+const rows: Row[] = [
+  ["penetration-test", "Penetration test", "Testing", "A security test where a trained person, with the client's written permission, tries to break into systems the way a real attacker would, to show what could actually happen.", ["pentest", "pen test"]],
+  ["vulnerability-assessment", "Vulnerability assessment", "Testing", "A broad, mostly automated check that lists known weaknesses across many systems. It shows what might be exploitable but does not prove it.", ["vulnerability scan", "vuln scan"]],
+  ["red-team", "Red team", "Testing", "A goal-based simulation of a determined attacker over weeks, testing people, processes and detection as well as technology.", ["red teaming"]],
+  ["soc", "SOC (security operations centre)", "Security", "A team that watches a client's systems around the clock, spots suspicious activity and responds to it.", ["security operations centre", "managed SOC"]],
+  ["incident-response", "Incident response", "Security", "The organised way of handling a security incident: detect, contain, investigate, remove the attacker, recover and learn.", ["IR"]],
+  ["authorisation-to-test", "Authorisation to test", "Legal", "A signed letter from someone with authority that lists exactly what Beryll may test, when and how. Without it, testing may be a crime.", ["rules of engagement", "RoE", "authorisation letter"]],
+  ["scope", "Scope", "Commercial", "The exact list of systems, locations and activities included in a piece of work, plus what is excluded.", ["in scope", "out of scope"]],
+  ["sow", "SOW (statement of work)", "Commercial", "A document that describes a specific project: what will be done, by when, for how much and under what conditions.", ["statement of work"]],
+  ["msa", "MSA (master services agreement)", "Legal", "The umbrella contract between Beryll and a client that sets general terms, such as liability and confidentiality. Individual projects then sit under it as SOWs.", ["master services agreement"]],
+  ["nda", "NDA (non-disclosure agreement)", "Legal", "A contract in which both sides promise to keep shared information confidential.", ["non-disclosure agreement", "confidentiality agreement"]],
+  ["dpa", "DPA (data processing agreement)", "Legal", "A contract required by GDPR between a controller and a processor setting out how personal data may be handled.", ["data processing agreement"]],
+  ["gdpr", "GDPR", "Compliance", "The EU's General Data Protection Regulation, which sets rules for handling personal data and gives people rights over it.", ["General Data Protection Regulation"]],
+  ["nis2", "NIS2", "Compliance", "An EU directive that requires organisations in important sectors to manage cyber risk, report serious incidents and be accountable at board level.", ["NIS 2"]],
+  ["iso-27001", "ISO 27001", "Compliance", "An international standard for running an information security management system. Organisations are audited by an independent body to be certified.", ["ISO27001"]],
+  ["controller", "Controller", "Compliance", "The organisation that decides why and how personal data is used. In most engagements, our client.", ["data controller"]],
+  ["processor", "Processor", "Compliance", "An organisation that handles personal data on behalf of a controller. In most engagements, Beryll.", ["data processor"]],
+  ["scc", "SCCs (standard contractual clauses)", "Legal", "Pre-approved contract wording that lets personal data be transferred outside the EU/EEA with legal safeguards.", ["standard contractual clauses"]],
+  ["dpo", "DPO (data protection officer)", "Compliance", "A person an organisation appoints to advise on and monitor data protection compliance.", ["data protection officer"]],
+  ["dpc", "DPC (Data Protection Commission)", "Compliance", "Ireland's data protection authority, which receives breach notifications and enforces GDPR.", ["Data Protection Commission"]],
+  ["personal-data-breach", "Personal data breach", "Compliance", "A security incident that leads to personal data being lost, altered, disclosed or accessed without permission. It may need to be reported within 72 hours.", ["data breach"]],
+  ["liability-cap", "Liability cap", "Legal", "A limit on how much one party can be forced to pay if something goes wrong. Ours is normally the fees paid in the last 12 months.", ["limitation of liability", "cap on liability"]],
+  ["indemnity", "Indemnity", "Legal", "A promise to cover another party's losses in certain situations. A wide indemnity can mean Beryll pays for things that were not its fault.", ["indemnify"]],
+  ["auto-renewal", "Auto-renewal", "Commercial", "A contract term that continues automatically unless someone cancels in time. Long terms or long notice periods can be a trap.", ["automatic renewal", "evergreen clause"]],
+  ["change-control", "Change control", "Commercial", "An agreed process for changing scope, dates or fees, so that changes are priced and approved in writing.", ["change request", "scope creep"]],
+  ["subprocessor", "Subprocessor", "Compliance", "A third party that a processor uses to help handle personal data, such as a cloud storage provider.", ["sub-processor"]],
+  ["cvss", "CVSS", "Security", "A 0 to 10 score of how severe a technical weakness is. It does not say how much it matters to a particular business.", ["common vulnerability scoring system"]],
+  ["sql-injection", "SQL injection", "Security", "A flaw where an attacker types database commands into a web form and the system obeys them, often exposing data.", ["SQLi"]],
+  ["phishing", "Phishing", "Security", "A fake message, usually an email, that tricks someone into giving up a password, clicking a bad link or opening a malicious file.", ["phish"]],
+  ["social-engineering", "Social engineering", "Security", "Manipulating people, rather than computers, to get access or information. Phishing is one type.", []],
+  ["mfa", "MFA (multi-factor authentication)", "Security", "Proving who you are with two or more things, such as a password plus a code on your phone. It blocks most account takeovers.", ["multi-factor authentication", "2FA", "two-factor authentication"]],
+  ["ransomware", "Ransomware", "Security", "Malicious software that locks a victim's files and demands payment to unlock them, often after stealing a copy too.", []],
+  ["zero-day", "Zero-day", "Security", "A weakness that attackers know about before the maker has released a fix, so there is no patch yet.", ["0-day"]],
+  ["patch", "Patch", "Security", "A software update that fixes a security weakness. Delayed patching is a leading cause of breaches.", ["patching"]],
+  ["exploit", "Exploit", "Security", "A method or tool that takes advantage of a weakness to gain unauthorised access or control.", []],
+  ["retest", "Retest", "Testing", "A follow-up check, after the client has fixed findings, to confirm that the fixes actually work.", ["re-test", "retesting"]],
+  ["remediation", "Remediation", "Testing", "The work of fixing a finding: changing a setting, updating software or rewriting code.", ["fix"]],
+  ["false-positive", "False positive", "Testing", "A reported problem that turns out not to be real. Scanners often produce them, which is why people check.", []],
+  ["data-classification", "Data classification", "Security", "Labelling information (Public, Internal, Confidential, Restricted) so that everyone knows how carefully to handle it.", []],
+  ["clean-desk", "Clean-desk policy", "Security", "A rule that sensitive papers and screens are secured whenever you leave your desk.", []],
+  ["escalation", "Escalation", "Commercial", "Passing an issue to someone with the right authority or expertise, early and with clear information.", ["escalate"]],
+  ["rfp", "RFP / tender", "Commercial", "A formal request from a buyer asking suppliers to propose and price a service. Public bodies must usually follow strict procurement rules.", ["tender", "request for proposal", "RFQ"]],
+  ["sla", "SLA (service level agreement)", "Commercial", "A promise about how quickly a service will respond or recover, often with penalties if missed.", ["service level agreement"]],
+];
+
+export const glossary: GlossaryTerm[] = rows.map(([id, term, category, definition, aliases]) => ({ id, term, category, definition, aliases: aliases ?? [] }));
+export const glossaryById = (id: string) => glossary.find((g) => g.id === id);
