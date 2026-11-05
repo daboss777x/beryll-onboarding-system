@@ -247,14 +247,14 @@ describe("sops", () => {
 });
 
 describe("staff", () => {
-  it("has 12 people with real interest overlaps, including Enoch the golfer", () => {
+  it("has 12 people with real interest overlaps, including Daniel the golfer", () => {
     parseAll(staffSchema, staff);
     expect(staff).toHaveLength(12);
     expect(unique(staff.map((s) => s.id))).toBe(true);
-    const enoch = staff.find((s) => s.name === "Enoch Omunu")!;
-    expect(enoch.title).toBe("Head of Offensive Security");
-    expect(enoch.interests).toContain("golf");
-    expect(enoch.availabilityNote).toMatch(/Saturday/);
+    const daniel = staff.find((s) => s.name === "Daniel Mensah")!;
+    expect(daniel.title).toBe("Head of Offensive Security");
+    expect(daniel.interests).toContain("golf");
+    expect(daniel.availabilityNote).toMatch(/Saturday/);
     const all = new Set<string>(INTERESTS);
     for (const s of staff) {
       s.interests.forEach((i) => expect(all.has(i), `${s.name} ${i}`).toBe(true));

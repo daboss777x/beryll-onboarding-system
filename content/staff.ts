@@ -33,14 +33,14 @@ export const staff: StaffMember[] = [
     avatarSeed: "liam-brennan",
   },
   {
-    id: "enoch-omunu",
-    name: "Enoch Omunu",
+    id: "daniel-mensah",
+    name: "Daniel Mensah",
     title: "Head of Offensive Security",
     team: "Offensive Security",
     bio: "Leads Beryll's penetration testers and red team. Started as a developer, moved into hacking for fun, and still explains findings better than anyone in the building.",
     interests: ["golf", "chess", "music"],
     availabilityNote: "Golfs most Saturdays at Portmarnock; happy to take a newcomer along for nine holes.",
-    avatarSeed: "enoch-omunu",
+    avatarSeed: "daniel-mensah",
   },
   {
     id: "marco-rossi",

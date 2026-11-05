@@ -148,7 +148,7 @@ Legend: ★ = user's own idea · ✚ = new suggestion · [ref] = research sectio
 ### Q6: Which suggested feature bundles to keep
 - Asked: Which of the assistant-suggested feature bundles (Part B) are in the demo? (The stack, interface and colours come after the features are settled, as the user asked.)
 - Captured: **Kept:** Contract & cyber labs; People & belonging; Feedback & at-risk. **Not selected:** AI practice suite (role-play, translator, drafting checker, Ask Beryl).
-- New from user: (1) **Dummy hires in the manager/admin view** at different stages, so tracking shows more than one person. (2) **Interest & connection matcher**: the hire is asked about situations, interests and personal details, then gets recommendations for colleagues with matching interests to meet ("Enoch likes golf too, maybe you guys can go golfing this weekend").
+- New from user: (1) **Dummy hires in the manager/admin view** at different stages, so tracking shows more than one person. (2) **Interest & connection matcher**: the hire is asked about situations, interests and personal details, then gets recommendations for colleagues with matching interests to meet ("Daniel likes golf too, maybe you guys can go golfing this weekend").
 - Flags: ~~possible conflict over the AI suite~~ resolved in Q7 (all AI features kept).
 - Tentative / suggested: the interest matcher is a natural fit for AI (matching plus a friendly intro message); it's also the relational onboarding from §4.5. Personal data should be opt-in and visible only to the colleagues it matches.
 

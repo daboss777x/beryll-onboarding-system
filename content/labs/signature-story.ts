@@ -26,7 +26,7 @@ export const signatureStory: Story = {
       title: "Tuesday, 22:10",
       body: "Your phone buzzes. Fernhill's hosting provider has detected an attack on its network and suspended Fernhill's site. The provider's security team has traced the traffic to Beryll and sent a formal notice. Dermot, who never signed anything, is not answering his phone. Jonas messages: \"Do I stop?\"",
       choices: [
-        { id: "night-a", text: "Tell Jonas to stop immediately, then call Enoch (Head of Offensive Security) and Amara (Legal), and write down exactly what happened and when", nextId: "end-mixed", consequence: "You contain the damage. You will still face an uncomfortable conversation and a review.", quality: "ok" },
+        { id: "night-a", text: "Tell Jonas to stop immediately, then call Daniel (Head of Offensive Security) and Amara (Legal), and write down exactly what happened and when", nextId: "end-mixed", consequence: "You contain the damage. You will still face an uncomfortable conversation and a review.", quality: "ok" },
         { id: "night-b", text: "Tell Jonas to carry on and hope it blows over until Dermot calls back", nextId: "end-bad", consequence: "Testing continues for another hour while the provider logs everything.", quality: "poor" },
       ],
     },

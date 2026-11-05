@@ -19,14 +19,14 @@ describe("matcher fallback", () => {
     expect(x.preferences.availability).toMatch(/weekend/i);
     expect(x.funFacts[0]).toMatch(/marathon/);
   });
-  it("matches 3 distinct colleagues by overlap, Enoch for golf+chess", () => {
+  it("matches 3 distinct colleagues by overlap, Daniel for golf+chess", () => {
     const picks = matchStaff(["golf", "chess"], staff);
     expect(picks).toHaveLength(3);
     expect(new Set(picks.map((p) => p.staff.id)).size).toBe(3);
-    expect(picks[0].staff.id).toBe("enoch-omunu");
+    expect(picks[0].staff.id).toBe("daniel-mensah");
     const s = templateSuggestion(picks[0]);
     expect(s.reason).toMatch(/golf/);
-    expect(s.icebreaker).toMatch(/Enoch/);
+    expect(s.icebreaker).toMatch(/Daniel/);
   });
   it("still suggests 3 people with no overlap, buddy first", () => {
     const picks = matchStaff(["knitting"], staff, { buddyStaffId: "marco-rossi" });

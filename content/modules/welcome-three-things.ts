@@ -17,7 +17,7 @@ export const welcomeThreeThings: Lesson = {
     },
     {
       heading: "3. Who to ask",
-      body: "| Question about | Ask |\n|---|---|\n| Anything at all, no matter how small | Marco, your buddy |\n| Priorities, goals, how you are doing | Siobhán, your manager |\n| A clause or a legal worry | Amara Okafor, Legal and Contracts Counsel |\n| What an engineer meant | Enoch Omunu, Head of Offensive Security, or Jonas Weber |\n| Laptop, access, desk | Elena Popescu, Operations |\n| Where a process is written down | **Ask Beryl** in the app, or the SOP hub |",
+      body: "| Question about | Ask |\n|---|---|\n| Anything at all, no matter how small | Marco, your buddy |\n| Priorities, goals, how you are doing | Siobhán, your manager |\n| A clause or a legal worry | Amara Okafor, Legal and Contracts Counsel |\n| What an engineer meant | Daniel Mensah, Head of Offensive Security, or Jonas Weber |\n| Laptop, access, desk | Elena Popescu, Operations |\n| Where a process is written down | **Ask Beryl** in the app, or the SOP hub |",
       callout: { tone: "tip", text: "If you are not sure who to ask, ask Marco. He will point you to the right person." },
     },
   ],

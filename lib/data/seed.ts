@@ -331,7 +331,7 @@ export function buildSeed(now: Date = new Date()): SeedData {
   // Alex (fresh demo hire): three open meet-the-team quests for the buddy to confirm.
   (
     [
-      ["enoch-omunu", "Meet Enoch (Offensive Security)"],
+      ["daniel-mensah", "Meet Daniel (Offensive Security)"],
       ["katarzyna-nowak", "Meet Katarzyna (Managed SOC)"],
       ["priya-nair", "Meet Priya (GRC)"],
     ] as const

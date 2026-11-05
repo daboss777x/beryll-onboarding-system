@@ -217,13 +217,13 @@ export function buildDemoData(today: string = DEMO_BASE_DATE): DemoData {
     kudos("kudos-sofia-2", sofia, "liam-brennan", "Liam Brennan", "peer", "Great catch on the 120-day payment clause in the Harbourline paper.", 18),
   ];
   sofia.shadowLogs = [
-    shadow(sofia, 1, 3, "Scoping call", "enoch-omunu", "Enoch asked what the client would do if the test found something bad on day one. Good question to borrow."),
+    shadow(sofia, 1, 3, "Scoping call", "daniel-mensah", "Daniel asked what the client would do if the test found something bad on day one. Good question to borrow."),
     shadow(sofia, 2, 4, "Client check-in", "liam-brennan", "Liam kept notes in the CRM live during the call."),
     shadow(sofia, 3, 6, "Report debrief", "jonas-weber", "Executive summary first, then technical detail only if asked."),
     shadow(sofia, 4, 9, "Contract discussion", "amara-okafor", "Amara asked three questions about liability before proposing any wording."),
     shadow(sofia, 5, 12, "SOC escalation (replayed)", "katarzyna-nowak", "Order of calls: SOC on-call, client contact, then manager."),
   ];
-  sofia.quests = [quest(sofia, 1, "buddy-intro", "marco-rossi", 1), quest(sofia, 2, "coffee", "jonas-weber", 6), quest(sofia, 3, "scoping-call", "enoch-omunu", 9)];
+  sofia.quests = [quest(sofia, 1, "buddy-intro", "marco-rossi", 1), quest(sofia, 2, "coffee", "jonas-weber", 6), quest(sofia, 3, "scoping-call", "daniel-mensah", 9)];
   sofia.story = { text: "In my last role a client called me at 19:00 on a Friday because their website was down. I stayed on the phone, got the right engineer, and we were back up by midnight. The client sent flowers the next week.", submittedAt: at(sofia.profile.startDate, "16:10") };
 
   // Tomás: day 45
@@ -235,11 +235,11 @@ export function buildDemoData(today: string = DEMO_BASE_DATE): DemoData {
   tomas.shadowLogs = [
     shadow(tomas, 1, 3, "Scoping call", "marco-rossi", "Learned to ask who owns the hosting before anything else."),
     shadow(tomas, 2, 5, "Client check-in", "siobhan-kelly", "Short and warm. Always ends with a dated next step."),
-    shadow(tomas, 3, 7, "Findings call", "enoch-omunu", "Enoch led with what the client should do, then why."),
+    shadow(tomas, 3, 7, "Findings call", "daniel-mensah", "Daniel led with what the client should do, then why."),
     shadow(tomas, 4, 10, "Contract discussion", "amara-okafor", "How to propose a fallback clause instead of just saying no."),
     shadow(tomas, 5, 12, "Incident call (replayed)", "katarzyna-nowak", "Never says 'safe' until the SOC says so."),
   ];
-  tomas.quests = [quest(tomas, 1, "buddy-intro", "marco-rossi", 1), quest(tomas, 2, "coffee", "elena-popescu", 4), quest(tomas, 3, "scoping-call", "enoch-omunu", 10), quest(tomas, 4, "cross-team", "declan-murphy", 40)];
+  tomas.quests = [quest(tomas, 1, "buddy-intro", "marco-rossi", 1), quest(tomas, 2, "coffee", "elena-popescu", 4), quest(tomas, 3, "scoping-call", "daniel-mensah", 10), quest(tomas, 4, "cross-team", "declan-murphy", 40)];
   tomas.story = { text: "I once rewrote a 40-page supplier contract in a weekend because a customer needed it signed by Monday. I learned that clear drafting is a kindness to everyone who has to read it later.", submittedAt: at(tomas.profile.startDate, "15:55") };
 
   // Nadia: day 78, at risk

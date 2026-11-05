@@ -5,7 +5,7 @@ export const sops: Sop[] = [
   {
     id: "scoping-call",
     title: "Running a scoping call",
-    owner: "enoch-omunu",
+    owner: "daniel-mensah",
     reviewDate: "2027-03-31",
     summary: "What to capture on a scoping call with an engineer, and what must be agreed before a SOW is drafted.",
     tags: ["scoping", "engineering", "SOW"],
@@ -91,7 +91,7 @@ Explain the steps, give a date, and escalate to the Head of Commercial. Do not s
   {
     id: "authorisation-to-test",
     title: "Authorisation to test",
-    owner: "enoch-omunu",
+    owner: "daniel-mensah",
     reviewDate: "2027-02-28",
     summary: "The one rule we never bend: no testing without a signed authorisation from someone with the authority to give it.",
     tags: ["authorisation", "legal", "rules of engagement", "critical"],

@@ -201,7 +201,7 @@ export async function polishLive(picks: MatchPick[], extract: MatcherExtract, cl
     schema: matcherPolishSchema,
     system: [
       "Write a friendly reason and a one-line icebreaker for each colleague a new hire at Beryll Cyber Security should meet.",
-      'reason: one or two sentences in second person that mention the shared interest and the colleague\'s availability, e.g. "Enoch golfs most Saturdays at Portmarnock, so ask him along." icebreaker: one concrete opener.',
+      'reason: one or two sentences in second person that mention the shared interest and the colleague\'s availability, e.g. "Daniel golfs most Saturdays at Portmarnock, so ask him along." icebreaker: one concrete opener.',
       "Use only the facts given. Keep each staffId exactly as given, same order.",
       SECURITY_RULES,
     ].join("\n"),
